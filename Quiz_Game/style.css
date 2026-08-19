@@ -1,0 +1,614 @@
+/* =========================================
+   QUIZ APP - PROFESSIONAL CSS
+   ========================================= */
+
+/* ---------- Google Font ---------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+
+/* =========================================
+   CSS VARIABLES
+   ========================================= */
+
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --primary-light: #eef2ff;
+
+    --success: #16a34a;
+    --success-bg: #f0fdf4;
+
+    --danger: #dc2626;
+    --danger-bg: #fef2f2;
+
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+
+    --background: #f5f7fb;
+    --surface: #ffffff;
+
+    --border: #e5e7eb;
+
+    --shadow:
+        0 20px 50px rgba(0, 0, 0, 0.10);
+
+    --radius: 16px;
+
+    --transition: 0.25s ease;
+}
+
+
+/* =========================================
+   RESET
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    font-size: 16px;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family: 'Inter', sans-serif;
+
+    color: var(--text-primary);
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(99, 102, 241, 0.15),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(139, 92, 246, 0.12),
+            transparent 35%
+        ),
+        var(--background);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
+
+.container {
+    width: 100%;
+    max-width: 650px;
+
+    background: var(--surface);
+
+    border: 1px solid rgba(229, 231, 235, 0.8);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   SCREEN SYSTEM
+   ========================================= */
+
+/*
+   All screens are hidden by default.
+*/
+
+.screen {
+    display: none;
+
+    padding: 48px;
+}
+
+
+/*
+   Only the screen with the active class
+   becomes visible.
+*/
+
+.screen.active {
+    display: block;
+
+    animation: screenFade 0.35s ease;
+}
+
+
+/* Screen transition */
+
+@keyframes screenFade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   START SCREEN
+   ========================================= */
+
+#start_screen {
+    text-align: center;
+}
+
+
+#start_screen h1 {
+    font-size: 3rem;
+
+    font-weight: 800;
+
+    letter-spacing: -1.5px;
+
+    margin-bottom: 14px;
+
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        #8b5cf6
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+#start_screen p {
+    max-width: 450px;
+
+    margin: 0 auto 32px;
+
+    color: var(--text-secondary);
+
+    font-size: 1rem;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   BUTTON BASE
+   ========================================= */
+
+button {
+    font-family: inherit;
+
+    border: none;
+
+    cursor: pointer;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        background var(--transition),
+        border-color var(--transition);
+}
+
+
+button:focus-visible {
+    outline: 3px solid rgba(99, 102, 241, 0.35);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================
+   START / RESTART BUTTON
+   ========================================= */
+
+#start_btn,
+#restart_btn {
+    width: 100%;
+
+    padding: 15px 24px;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-dark)
+    );
+
+    color: #ffffff;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 8px 20px rgba(99, 102, 241, 0.25);
+}
+
+
+#start_btn:hover,
+#restart_btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 28px rgba(99, 102, 241, 0.35);
+}
+
+
+#start_btn:active,
+#restart_btn:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   QUIZ HEADER
+   ========================================= */
+
+.quiz_header {
+    margin-bottom: 28px;
+}
+
+
+.quiz_header h2 {
+    font-size: 1.45rem;
+
+    line-height: 1.5;
+
+    font-weight: 700;
+
+    letter-spacing: -0.3px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   QUIZ INFORMATION
+   ========================================= */
+
+.quiz_info {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 14px 16px;
+
+    background: var(--primary-light);
+
+    border-radius: 10px;
+}
+
+
+.quiz_info p {
+    color: var(--text-secondary);
+
+    font-size: 0.85rem;
+
+    font-weight: 500;
+}
+
+
+.quiz_info span {
+    color: var(--primary);
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   ANSWERS CONTAINER
+   ========================================= */
+
+.answers_container {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-bottom: 28px;
+}
+
+
+/* =========================================
+   ANSWER BUTTONS
+   ========================================= */
+
+.answer_btn {
+    width: 100%;
+
+    padding: 16px 18px;
+
+    background: #ffffff;
+
+    color: var(--text-primary);
+
+    border: 2px solid var(--border);
+
+    border-radius: 12px;
+
+    text-align: left;
+
+    font-size: 0.95rem;
+
+    font-weight: 500;
+
+    line-height: 1.5;
+
+    position: relative;
+}
+
+
+.answer_btn:hover {
+    background: var(--primary-light);
+
+    border-color: var(--primary);
+
+    transform: translateY(-1px);
+}
+
+
+.answer_btn:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   CORRECT ANSWER
+   ========================================= */
+
+.answer_btn.correct {
+    background: var(--success-bg);
+
+    border-color: var(--success);
+
+    color: var(--success);
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   INCORRECT ANSWER
+   ========================================= */
+
+.answer_btn.incorrect {
+    background: var(--danger-bg);
+
+    border-color: var(--danger);
+
+    color: var(--danger);
+}
+
+
+/*
+   Prevent hovering from changing the
+   appearance after an answer is selected.
+*/
+
+.answer_btn.correct:hover,
+.answer_btn.incorrect:hover {
+    transform: none;
+}
+
+
+/* =========================================
+   PROGRESS BAR
+   ========================================= */
+
+.progress_bar {
+    width: 100%;
+
+    height: 8px;
+
+    background: #e5e7eb;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+}
+
+
+.progress {
+    width: 0%;
+
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        var(--primary),
+        #8b5cf6
+    );
+
+    border-radius: inherit;
+
+    transition: width 0.4s ease;
+}
+
+
+/* =========================================
+   RESULT SCREEN
+   ========================================= */
+
+#result_screen {
+    text-align: center;
+}
+
+
+#result_screen h1 {
+    font-size: 2.3rem;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 28px;
+}
+
+
+/* =========================================
+   RESULT SCORE
+   ========================================= */
+
+.result_info {
+    padding: 28px 20px;
+
+    margin-bottom: 20px;
+
+    background: var(--primary-light);
+
+    border-radius: var(--radius);
+}
+
+
+.result_info p {
+    color: var(--text-secondary);
+
+    font-size: 1rem;
+
+    line-height: 1.6;
+}
+
+
+.result_info span {
+    color: var(--primary);
+
+    font-size: 2.5rem;
+
+    font-weight: 800;
+}
+
+
+/* =========================================
+   RESULT MESSAGE
+   ========================================= */
+
+#result_message {
+    color: var(--text-secondary);
+
+    font-size: 1rem;
+
+    line-height: 1.6;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 16px;
+    }
+
+
+    .container {
+        border-radius: 14px;
+    }
+
+
+    .screen {
+        padding: 32px 24px;
+    }
+
+
+    #start_screen h1 {
+        font-size: 2.4rem;
+    }
+
+
+    #start_screen p {
+        font-size: 0.95rem;
+    }
+
+
+    .quiz_header h2 {
+        font-size: 1.25rem;
+    }
+
+
+    .quiz_info {
+        padding: 12px 14px;
+    }
+
+
+    .quiz_info p {
+        font-size: 0.8rem;
+    }
+
+
+    .answer_btn {
+        padding: 14px;
+
+        font-size: 0.9rem;
+    }
+
+
+    #result_screen h1 {
+        font-size: 2rem;
+    }
+
+
+    .result_info span {
+        font-size: 2.2rem;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE DEVICES
+   ========================================= */
+
+@media (max-width: 400px) {
+
+    body {
+        padding: 12px;
+    }
+
+
+    .screen {
+        padding: 28px 18px;
+    }
+
+
+    #start_screen h1 {
+        font-size: 2rem;
+    }
+
+
+    .quiz_info {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 6px;
+    }
+
+
+    #result_screen h1 {
+        font-size: 1.8rem;
+    }
+}
