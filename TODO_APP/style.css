@@ -1,0 +1,579 @@
+/* ================================
+   RESET & BASE STYLES
+   ================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --primary-light: rgba(99, 102, 241, 0.1);
+    --success: #10b981;
+    --success-light: rgba(16, 185, 129, 0.1);
+    --danger: #ef4444;
+    --danger-light: rgba(239, 68, 68, 0.1);
+    --bg-body: #f1f5f9;
+    --bg-card: #ffffff;
+    --bg-subtle: #f8fafc;
+    --border: #e2e8f0;
+    --border-focus: #c7d2fe;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    --radius: 12px;
+    --radius-lg: 16px;
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: linear-gradient(135deg, #eef2ff 0%, #f1f5f9 50%, #faf5ff 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    color: var(--text-primary);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ================================
+   APP CONTAINER
+   ================================ */
+.app {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 560px;
+    box-shadow: var(--shadow-xl), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+    overflow: hidden;
+    animation: slideUp 0.5s ease-out;
+    position: relative;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   HEADER
+   ================================ */
+header {
+    padding: 32px 32px 24px;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
+}
+
+header h1 i {
+    font-size: 1.6rem;
+    background: rgba(255, 255, 255, 0.2);
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    backdrop-filter: blur(4px);
+}
+
+#date {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    position: relative;
+    z-index: 1;
+    padding-left: 54px;
+}
+
+/* ================================
+   INPUT SECTION
+   ================================ */
+.todo-input {
+    display: flex;
+    gap: 10px;
+    padding: 24px 32px 8px;
+}
+
+#task-input {
+    flex: 1;
+    padding: 14px 18px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: var(--text-primary);
+    background: var(--bg-subtle);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    outline: none;
+    transition: var(--transition);
+}
+
+#task-input::placeholder {
+    color: var(--text-muted);
+}
+
+#task-input:focus {
+    border-color: var(--primary);
+    background: var(--bg-card);
+    box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+#add-task {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+#add-task:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+}
+
+#add-task:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+#add-task i {
+    transition: transform 0.3s ease;
+}
+
+#add-task:hover i {
+    transform: rotate(90deg);
+}
+
+/* ================================
+   FILTERS
+   ================================ */
+.filters {
+    display: flex;
+    gap: 6px;
+    padding: 16px 32px;
+    background: var(--bg-subtle);
+    border-bottom: 1px solid var(--border);
+}
+
+.filter {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    user-select: none;
+    letter-spacing: 0.01em;
+    position: relative;
+}
+
+.filter:hover {
+    background: rgba(99, 102, 241, 0.08);
+    color: var(--primary);
+}
+
+.filter.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+/* ================================
+   TODOS CONTAINER
+   ================================ */
+.todos-container {
+    max-height: 420px;
+    overflow-y: auto;
+    padding: 8px 0;
+    position: relative;
+}
+
+.todos-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.todos-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.todos-container::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 8px;
+}
+
+.todos-container::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+#todos-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ================================
+   TODO ITEM
+   ================================ */
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 32px;
+    border-bottom: 1px solid var(--border);
+    transition: var(--transition);
+    animation: fadeIn 0.3s ease-out;
+    position: relative;
+}
+
+.todo-item:last-child {
+    border-bottom: none;
+}
+
+.todo-item:hover {
+    background: var(--bg-subtle);
+}
+
+.todo-item:hover .delete-btn {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ================================
+   CUSTOM CHECKBOX
+   ================================ */
+.check-box {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.todo-checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    background-color: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkmark::after {
+    content: '';
+    width: 6px;
+    height: 11px;
+    border: solid white;
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg) scale(0);
+    transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    margin-top: -2px;
+    opacity: 0;
+}
+
+.check-box:hover .checkmark {
+    border-color: var(--primary);
+    background-color: var(--primary-light);
+}
+
+.todo-checkbox:checked ~ .checkmark {
+    background-color: var(--success);
+    border-color: var(--success);
+}
+
+.todo-checkbox:checked ~ .checkmark::after {
+    transform: rotate(45deg) scale(1);
+    opacity: 1;
+}
+
+/* ================================
+   TODO TEXT
+   ================================ */
+.todo-item-text {
+    flex: 1;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    transition: var(--transition);
+    word-break: break-word;
+    line-height: 1.4;
+}
+
+.todo-item.completed .todo-item-text {
+    text-decoration: line-through;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+/* ================================
+   DELETE BUTTON
+   ================================ */
+.delete-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: var(--text-muted);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.delete-btn:hover {
+    background: var(--danger-light);
+    color: var(--danger);
+    transform: scale(1) rotate(90deg);
+}
+
+/* ================================
+   EMPTY STATE
+   ================================ */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 32px;
+    text-align: center;
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.empty-state.hidden {
+    display: none;
+}
+
+.empty-state i {
+    font-size: 3.5rem;
+    color: var(--border);
+    margin-bottom: 16px;
+    transition: var(--transition);
+}
+
+.empty-state p {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.empty-state:hover i {
+    color: var(--primary);
+    transform: scale(1.1) rotate(-5deg);
+}
+
+/* ================================
+   FOOTER
+   ================================ */
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    background: var(--bg-subtle);
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+#items-left {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+#clear-completed {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: var(--transition);
+    letter-spacing: 0.01em;
+}
+
+#clear-completed:hover {
+    color: var(--danger);
+    background: var(--danger-light);
+}
+
+#clear-completed:active {
+    transform: scale(0.96);
+}
+
+/* ================================
+   RESPONSIVE DESIGN
+   ================================ */
+@media (max-width: 560px) {
+    body {
+        padding: 16px 12px;
+    }
+
+    header {
+        padding: 24px 20px 20px;
+    }
+
+    header h1 {
+        font-size: 1.4rem;
+    }
+
+    header h1 i {
+        width: 36px;
+        height: 36px;
+        font-size: 1.3rem;
+    }
+
+    #date {
+        padding-left: 48px;
+        font-size: 0.8rem;
+    }
+
+    .todo-input {
+        padding: 20px 20px 8px;
+    }
+
+    #task-input {
+        padding: 12px 14px;
+        font-size: 0.9rem;
+    }
+
+    #add-task {
+        width: 48px;
+        height: 48px;
+    }
+
+    .filters {
+        padding: 12px 20px;
+        overflow-x: auto;
+    }
+
+    .filter {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+
+    .todo-item {
+        padding: 12px 20px;
+        gap: 12px;
+    }
+
+    .delete-btn {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    footer {
+        padding: 14px 20px;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+/* ================================
+   ACCESSIBILITY
+   ================================ */
+button:focus-visible,
+input:focus-visible,
+.filter:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
