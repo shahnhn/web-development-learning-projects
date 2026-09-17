@@ -1,8 +1,8 @@
-### 1. Quiz Game
+## Quiz Game
 
 An interactive quiz application that tests users on beginner-level cybersecurity concepts.
 
-#### Features
+## Features
 
 - Multiple-choice cybersecurity questions
 - Real-time score tracking
@@ -12,7 +12,7 @@ An interactive quiz application that tests users on beginner-level cybersecurity
 - Restart quiz functionality
 - Responsive user interface
 
-#### Technologies Used
+## Technologies Used
 
 - HTML5
 - CSS3
