@@ -1,8 +1,8 @@
-### Password Generator
+## Password Generator
 
 A beginner-friendly password generator that creates customizable passwords based on user-selected options.
 
-**Features:**
+## Features:
 
 - Adjustable password length
 - Uppercase letters option
@@ -13,4 +13,7 @@ A beginner-friendly password generator that creates customizable passwords based
 - Copy password to clipboard
 - Automatic password generation
 
-**Technologies:** HTML, CSS, and JavaScript
+## Technologies:
+- HTML
+- CSS
+- JavaScript
