@@ -38,7 +38,7 @@ The form uses a cybersecurity-inspired visual style featuring:
 * Animated interactions
 * Responsive design
 
-## 💻 Form Fields
+## Form Fields
 
 | Field   | Type      | Required |
 | ------- | --------- | -------- |
