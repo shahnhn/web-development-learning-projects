@@ -1,0 +1,738 @@
+/* ============================================================
+   PRICING CARDS — PREMIUM SAAS THEME
+   ============================================================ */
+
+   :root {
+    /* Brand palette */
+    --indigo-50:   #eef2ff;
+    --indigo-100:  #e0e7ff;
+    --indigo-300:  #a5b4fc;
+    --indigo-500:  #6366f1;
+    --indigo-600:  #4f46e5;
+    --indigo-700:  #4338ca;
+
+    --violet-300:  #c4b5fd;
+    --violet-400:  #a78bfa;
+    --violet-500:  #8b5cf6;
+    --violet-600:  #7c3aed;
+
+    --amber-300:   #fcd34d;
+    --amber-400:   #fbbf24;
+    --amber-500:   #f59e0b;
+
+    /* Neutrals */
+    --bg-page:     #f8fafc;
+    --bg-card:     #ffffff;
+    --bg-subtle:   #f1f5f9;
+    --bg-dark:     #0f172a;
+
+    --text-primary:   #0f172a;
+    --text-secondary: #475569;
+    --text-muted:     #94a3b8;
+    --text-disabled:  #cbd5e1;
+
+    --border-subtle:  #e2e8f0;
+    --border-strong:  #cbd5e1;
+
+    /* Effects */
+    --shadow-sm:  0 1px 2px 0 rgba(15, 23, 42, 0.05);
+    --shadow-md:  0 4px 6px -1px rgba(15, 23, 42, 0.08),
+                  0 2px 4px -2px rgba(15, 23, 42, 0.06);
+    --shadow-lg:  0 12px 24px -6px rgba(15, 23, 42, 0.12),
+                  0 4px 8px -4px rgba(15, 23, 42, 0.08);
+    --shadow-xl:  0 24px 48px -12px rgba(79, 70, 229, 0.25),
+                  0 8px 16px -8px rgba(15, 23, 42, 0.1);
+    --shadow-pop: 0 30px 60px -20px rgba(124, 58, 237, 0.45),
+                  0 0 0 1px rgba(139, 92, 246, 0.25),
+                  0 0 48px -8px rgba(139, 92, 246, 0.35);
+
+    /* Geometry */
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    --radius-pill: 999px;
+
+    /* Motion */
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --dur-fast: 150ms;
+    --dur: 250ms;
+    --dur-slow: 400ms;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+    font-family: "Inter", "Segoe UI", system-ui, -apple-system,
+                 "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+    background-color: var(--bg-page);
+    /* Soft ambient gradient wash */
+    background-image:
+        radial-gradient(ellipse 900px 600px at 15% -10%,
+            rgba(99, 102, 241, 0.10), transparent 60%),
+        radial-gradient(ellipse 800px 500px at 100% 20%,
+            rgba(139, 92, 246, 0.08), transparent 65%),
+        radial-gradient(ellipse 700px 500px at 50% 120%,
+            rgba(251, 191, 36, 0.06), transparent 60%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 64px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* ============================================================
+   LAYOUT CONTAINER
+   ============================================================ */
+
+.container {
+    width: 100%;
+    max-width: 1180px;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+header {
+    text-align: center;
+    margin-bottom: 56px;
+    animation: fadeUp var(--dur-slow) var(--ease) both;
+}
+
+header h1 {
+    font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg,
+        var(--text-primary) 0%,
+        var(--indigo-600) 55%,
+        var(--violet-600) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+header p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 48ch;
+    margin: 0 auto;
+    letter-spacing: 0.01em;
+}
+
+/* ============================================================
+   PRICING CARDS GRID
+   ============================================================ */
+
+.pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+    margin-bottom: 80px;
+}
+
+/* ============================================================
+   BASE CARD
+   ============================================================ */
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    padding: 36px 32px 32px;
+    box-shadow: var(--shadow-md);
+    transition:
+        transform var(--dur) var(--ease),
+        box-shadow var(--dur) var(--ease),
+        border-color var(--dur) var(--ease);
+    animation: fadeUp var(--dur-slow) var(--ease) both;
+}
+
+.card:nth-child(1) { animation-delay: 60ms; }
+.card:nth-child(2) { animation-delay: 120ms; }
+.card:nth-child(3) { animation-delay: 180ms; }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--border-strong);
+}
+
+/* ---------- Card Header ---------- */
+
+.card-header {
+    text-align: center;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.plan-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    font-size: 1.35rem;
+    color: var(--indigo-600);
+    background: linear-gradient(135deg,
+        var(--indigo-50) 0%,
+        var(--indigo-100) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.18);
+    transition:
+        transform var(--dur) var(--ease),
+        box-shadow var(--dur) var(--ease),
+        background var(--dur) var(--ease);
+}
+
+.card:hover .plan-icon {
+    transform: scale(1.06) rotate(-4deg);
+    box-shadow: 0 8px 20px -6px rgba(99, 102, 241, 0.35);
+}
+
+.card-header h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+}
+
+/* ---------- Price ---------- */
+
+.price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 3px;
+    margin-bottom: 14px;
+    line-height: 1;
+}
+
+.price .currency {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    align-self: flex-start;
+    margin-top: 6px;
+}
+
+.price .amount {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+}
+
+.price .period {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-left: 2px;
+}
+
+.description {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    max-width: 30ch;
+    margin: 0 auto;
+}
+
+/* ---------- Card Body / Features ---------- */
+
+.card-body {
+    flex: 1;
+    margin-bottom: 28px;
+}
+
+.features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    line-height: 1.45;
+    transition: color var(--dur) var(--ease);
+}
+
+.features li i {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    border-radius: 50%;
+    transition:
+        transform var(--dur) var(--ease),
+        box-shadow var(--dur) var(--ease);
+}
+
+/* Included features */
+.features li:not(.disabled) i {
+    color: #ffffff;
+    background: linear-gradient(135deg,
+        var(--indigo-500) 0%,
+        var(--violet-500) 100%);
+    box-shadow: 0 2px 6px -2px rgba(99, 102, 241, 0.5);
+}
+
+.card:hover .features li:not(.disabled) i {
+    box-shadow: 0 3px 10px -2px rgba(99, 102, 241, 0.65);
+}
+
+/* Excluded features */
+.features li.disabled {
+    color: var(--text-disabled);
+    text-decoration: none;
+}
+
+.features li.disabled i {
+    color: var(--text-disabled);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
+}
+
+.features li.disabled span,
+.features li.disabled {
+    font-weight: 500;
+}
+
+/* ---------- Card Footer / Button ---------- */
+
+.card-footer {
+    margin-top: auto;
+}
+
+.btn {
+    position: relative;
+    width: 100%;
+    padding: 14px 20px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    overflow: hidden;
+    isolation: isolate;
+    transition:
+        transform var(--dur) var(--ease),
+        background-color var(--dur) var(--ease),
+        border-color var(--dur) var(--ease),
+        color var(--dur) var(--ease),
+        box-shadow var(--dur) var(--ease);
+}
+
+.btn:hover {
+    background: var(--indigo-600);
+    border-color: var(--indigo-600);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -8px rgba(79, 70, 229, 0.5);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px -4px rgba(79, 70, 229, 0.5);
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--indigo-500);
+    outline-offset: 3px;
+}
+
+/* ============================================================
+   POPULAR CARD (Pro Plan)
+   ============================================================ */
+
+.card-popular {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 36px 32px 32px;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(180deg,
+        #ffffff 0%,
+        #fdfbff 100%);
+    border: 2px solid var(--violet-400);
+    box-shadow: var(--shadow-pop);
+    transform: translateY(-12px);
+    z-index: 2;
+    animation: fadeUp var(--dur-slow) var(--ease) both;
+    animation-delay: 120ms;
+    transition:
+        transform var(--dur) var(--ease),
+        box-shadow var(--dur) var(--ease);
+}
+
+.card-popular:hover {
+    transform: translateY(-18px);
+    box-shadow:
+        0 40px 70px -20px rgba(124, 58, 237, 0.55),
+        0 0 0 1px rgba(139, 92, 246, 0.35),
+        0 0 60px -8px rgba(139, 92, 246, 0.45);
+}
+
+/* ---------- Popular Badge ---------- */
+
+.popular-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 7px 18px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: linear-gradient(135deg,
+        var(--violet-600) 0%,
+        var(--indigo-600) 100%);
+    border-radius: var(--radius-pill);
+    box-shadow:
+        0 8px 20px -6px rgba(124, 58, 237, 0.7),
+        0 0 0 4px rgba(255, 255, 255, 0.9),
+        0 0 0 5px rgba(139, 92, 246, 0.25);
+    white-space: nowrap;
+    z-index: 3;
+}
+
+/* Popular card header/icon tweaks */
+.card-popular .plan-icon {
+    color: var(--violet-600);
+    background: linear-gradient(135deg,
+        #f5f3ff 0%,
+        #ede9fe 100%);
+    border-color: rgba(139, 92, 246, 0.28);
+}
+
+.card-popular:hover .plan-icon {
+    box-shadow: 0 8px 22px -6px rgba(139, 92, 246, 0.55);
+}
+
+.card-popular .card-header {
+    border-bottom-color: rgba(139, 92, 246, 0.18);
+}
+
+/* ---------- Popular Button (Accent) ---------- */
+
+.btn-accent {
+    background: linear-gradient(135deg,
+        var(--violet-600) 0%,
+        var(--indigo-600) 100%);
+    border-color: transparent;
+    color: #ffffff;
+    box-shadow:
+        0 10px 24px -8px rgba(124, 58, 237, 0.55),
+        0 0 0 1px rgba(196, 181, 253, 0.35) inset,
+        0 1px 0 rgba(255, 255, 255, 0.18) inset;
+}
+
+/* Shine sweep for the accent button */
+.btn-accent::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg,
+        transparent 25%,
+        rgba(255, 255, 255, 0.28) 50%,
+        transparent 75%);
+    transform: translateX(-120%);
+    transition: transform 700ms var(--ease);
+    z-index: -1;
+}
+
+.btn-accent:hover::before {
+    transform: translateX(120%);
+}
+
+.btn-accent:hover {
+    background: linear-gradient(135deg,
+        var(--violet-500) 0%,
+        var(--indigo-500) 100%);
+    border-color: transparent;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow:
+        0 16px 32px -10px rgba(124, 58, 237, 0.75),
+        0 0 0 1px rgba(196, 181, 253, 0.5) inset,
+        0 0 32px -4px rgba(139, 92, 246, 0.4);
+}
+
+/* ============================================================
+   TESTIMONIAL
+   ============================================================ */
+
+.testimonial {
+    display: flex;
+    justify-content: center;
+    padding: 0 8px;
+}
+
+.quote {
+    position: relative;
+    max-width: 640px;
+    width: 100%;
+    padding: 44px 40px 36px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition:
+        box-shadow var(--dur) var(--ease),
+        transform var(--dur) var(--ease);
+}
+
+.quote:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+/* Decorative quote icon */
+.quote > i {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    color: #ffffff;
+    background: linear-gradient(135deg,
+        var(--indigo-500) 0%,
+        var(--violet-500) 100%);
+    border-radius: 50%;
+    box-shadow:
+        0 10px 24px -8px rgba(99, 102, 241, 0.6),
+        0 0 0 6px var(--bg-page);
+}
+
+/* The quote text */
+.quote > p {
+    font-size: 1.1rem;
+    line-height: 1.65;
+    color: var(--text-primary);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    font-style: italic;
+    margin-bottom: 28px;
+    max-width: 46ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Author block */
+.author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: linear-gradient(135deg,
+        var(--indigo-100) 0%,
+        var(--violet-300) 100%);
+    box-shadow:
+        0 0 0 3px var(--bg-card),
+        0 0 0 4px var(--border-subtle),
+        0 6px 16px -6px rgba(99, 102, 241, 0.5);
+    transition: transform var(--dur) var(--ease);
+}
+
+.quote:hover .avatar {
+    transform: scale(1.05);
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.info {
+    text-align: left;
+}
+
+.info h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    margin-bottom: 2px;
+}
+
+.info p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* Tablet — 2 columns with popular spanning full width in the middle */
+@media (max-width: 1024px) {
+    .pricing-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+    }
+
+    .card-popular {
+        transform: translateY(-8px);
+        grid-column: 1 / -1;
+        max-width: 560px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .card-popular:hover {
+        transform: translateY(-14px);
+    }
+}
+
+/* Mobile — single column */
+@media (max-width: 640px) {
+    body {
+        padding: 40px 16px;
+    }
+
+    header {
+        margin-bottom: 40px;
+    }
+
+    header p {
+        font-size: 0.95rem;
+    }
+
+    .pricing-cards {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-bottom: 56px;
+    }
+
+    .card,
+    .card-popular {
+        padding: 30px 24px 26px;
+        border-radius: var(--radius-lg);
+        transform: none;
+    }
+
+    .card-popular {
+        margin-top: 8px;
+    }
+
+    .card:hover,
+    .card-popular:hover {
+        transform: translateY(-4px);
+    }
+
+    .price .amount {
+        font-size: 2.6rem;
+    }
+
+    .quote {
+        padding: 40px 24px 30px;
+        border-radius: var(--radius-lg);
+    }
+
+    .quote > p {
+        font-size: 1rem;
+    }
+
+    .author {
+        justify-content: flex-start;
+        text-align: left;
+    }
+}
+
+/* ============================================================
+   ACCESSIBILITY / PREFERENCES
+   ============================================================ */
+
+@media (prefers-contrast: more) {
+    :root {
+        --text-secondary: #334155;
+        --text-muted:     #64748b;
+        --border-subtle:  #94a3b8;
+        --border-strong:  #64748b;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .btn-accent::before { display: none; }
+}
+
+::selection {
+    background: rgba(99, 102, 241, 0.25);
+    color: var(--text-primary);
+}
